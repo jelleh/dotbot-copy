@@ -46,11 +46,11 @@ Example containing all options enumerated with their default values:
 
 - copy:
     ~/.config/myapp/config.json:
-      path: dotfiles/myapp/config.json
+      path: config/myapp/config.json
       overwrite: true   # Override global default for this file
       create: true      # Create parent directories for this file
     ~/.local/share/myapp/data:
-      path: dotfiles/myapp/data
+      path: local/share/myapp/data
       overwrite: false  # Use global default
       create: false     # Use global default
 ```
@@ -60,7 +60,7 @@ You can also use a simpler format for files that don't need the overwrite option
 
 ```yaml
 - copy:
-    ~/.config/myapp/config.json: dotfiles/myapp/config.json
+    ~/.config/myapp/config.json: config/myapp/config.json
 ```
 
 ### Using Destination Basename
