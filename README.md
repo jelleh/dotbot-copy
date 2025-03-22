@@ -30,14 +30,17 @@ Example containing all options enumerated with their default values:
 - defaults:
     copy:
       overwrite: false  # Whether to overwrite existing files
+      create: false     # Whether to create parent directories as needed
 
 - copy:
     ~/.config/myapp/config.json:
       path: dotfiles/myapp/config.json
-      overwrite: true  # Override global default for this file
+      overwrite: true   # Override global default for this file
+      create: true      # Create parent directories for this file
     ~/.local/share/myapp/data:
       path: dotfiles/myapp/data
       overwrite: false  # Use global default
+      create: false     # Use global default
 ```
 
 ### Simple Format
