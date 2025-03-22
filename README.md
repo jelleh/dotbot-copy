@@ -11,7 +11,7 @@ This plugin is designed for scenarios where you need to copy configuration files
 Add the plugin as a submodule to your dotfiles repo:
 
 ```bash
-git submodule add https://github.com/yourusername/dotbot-copy.git
+git submodule add https://github.com/jelleh/dotbot-copy.git
 ```
 
 Execute `dotbot` with plugin parameter:
