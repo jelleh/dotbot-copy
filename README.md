@@ -2,20 +2,34 @@
 
 A plugin for [dotbot](https://github.com/anishathalye/dotbot) that provides file copying functionality.
 
-## Installation
+## Purpose
 
-```bash
-pip install -e .
-```
+This plugin is designed for scenarios where you need to copy configuration files instead of creating symbolic links. It's particularly useful when you have example configuration files in your dotfiles repository that need to be copied to different machines, where each machine may require its own local modifications. Unlike dotbot's built-in linking functionality, this plugin creates actual copies of the files, allowing for machine-specific customizations while maintaining the original example files in your dotfiles repository.
 
 ## Usage
 
-Add the following to your `install.conf.yaml`:
+Add the plugin as a submodule to your dotfiles repo:
+
+```bash
+git submodule add https://github.com/yourusername/dotbot-copy.git
+```
+
+Execute `dotbot` with plugin parameter:
+
+```bash
+./install -p dotbot-copy/copy.py
+```
+
+## Configuration
+
+All configuration parameters can be specified either globally in `defaults` task or locally for each individual record.
+
+Example containing all options enumerated with their default values:
 
 ```yaml
 - defaults:
     copy:
-      overwrite: false  # Global default for overwrite option
+      overwrite: false  # Whether to overwrite existing files
 
 - copy:
     ~/.config/myapp/config.json:
@@ -25,17 +39,6 @@ Add the following to your `install.conf.yaml`:
       path: dotfiles/myapp/data
       overwrite: false  # Use global default
 ```
-
-## Configuration
-
-The plugin supports the following configuration options:
-
-### Global Defaults
-- `overwrite`: (boolean) Global default for whether to overwrite existing files. Defaults to `false`.
-
-### File Options
-- `path`: (string) The source path of the file to copy
-- `overwrite`: (boolean) Whether to overwrite this specific file if it exists. If not specified, uses the global default.
 
 ### Simple Format
 You can also use a simpler format for files that don't need the overwrite option:
