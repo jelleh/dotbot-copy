@@ -6,6 +6,18 @@ A plugin for [dotbot](https://github.com/anishathalye/dotbot) that provides file
 
 This plugin is designed for scenarios where you need to copy configuration files instead of creating symbolic links. It's particularly useful when you have example configuration files in your dotfiles repository that need to be copied to different machines, where each machine may require its own local modifications. Unlike dotbot's built-in linking functionality, this plugin creates actual copies of the files, allowing for machine-specific customizations while maintaining the original example files in your dotfiles repository.
 
+## Safety Features
+
+The plugin includes several safety measures to prevent accidental file operations:
+
+1. **Home Directory Restriction**: All operations are restricted to the user's home directory. Any attempts to copy files outside the home directory will be blocked.
+
+2. **Overwrite Protection**: By default, existing files are never overwritten. The `overwrite` option must be explicitly set to `true` to allow overwriting files.
+
+3. **Directory Safety**: When copying directories, the plugin checks for existing files in the destination to prevent accidental overwrites of any files within the directory structure.
+
+4. **Parent Directory Control**: The `create` option controls whether parent directories should be created. When set to `false` (default), the plugin will fail if parent directories don't exist, preventing accidental directory creation.
+
 ## Usage
 
 Add the plugin as a submodule to your dotfiles repo:
